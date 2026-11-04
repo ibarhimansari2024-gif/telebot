@@ -12,7 +12,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p src && cd src
-          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/src-v1" --jq '.assets[] | select(.name | startswith("tbpart_")) | .browser_download_url' | sort > urls.txt
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/src-v2" --jq '.assets[] | select(.name | startswith("tbpart_")) | .browser_download_url' | sort > urls.txt
           i=0
           while read -r url; do
             i=$((i+1))
