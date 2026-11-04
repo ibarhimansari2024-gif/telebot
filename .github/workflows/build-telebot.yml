@@ -19,8 +19,8 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK licenses (SDK preinstalled on runner)
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null 2>&1 || true
 
       - name: Build telebot debug APK
         run: ./gradlew :TMessagesProj_App:assembleAfatDebug --no-daemon --stacktrace
